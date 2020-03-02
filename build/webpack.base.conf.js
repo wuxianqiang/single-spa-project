@@ -1,6 +1,6 @@
 const path = require('path')
 // const webpack = require('webpack')
-// const HtmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 // const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
@@ -41,10 +41,10 @@ module.exports = {
     ]
   },
   plugins: [
-    // new HtmlWebpackPlugin({
-    //   template: path.resolve(dir, 'template.html'),
-    //   chunks: ['app']
-    // }),
+    new HtmlWebpackPlugin({
+      template: path.resolve(dir, 'template.html'),
+      chunks: ['app']
+    }),
     // new webpack.DllReferencePlugin({
     //   manifest: path.resolve(dir, 'manifest.json')
     // }),

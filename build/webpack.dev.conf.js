@@ -8,10 +8,11 @@ module.exports = Merge(baseConfig, {
   mode: 'development',
   output: {
     filename: '[name].js',
-    path: path.resolve(dir, '../home/project1'),
+    path: path.resolve(dir, 'dist'),
     library: 'ELEMENT',
     libraryTarget: 'umd',
     libraryExport: 'default',
+    publicPath: 'http://localhost:9000/'
   },
   devtool: 'source-map',
   plugins: [
@@ -71,16 +72,19 @@ module.exports = Merge(baseConfig, {
       }
     ]
   },
-  // devServer: {
-  //   host: '0.0.0.0',
-  //   port: 8000,
-  //   hot: true,
-  //   open: true,
-  //   overlay: {
-  //     errors: true,
-  //     warnings: true
-  //   },
-  //   contentBase: path.resolve(dir, 'dist')
-  // },
+  devServer: {
+    host: 'localhost',
+    port: 9000,
+    hot: true,
+    open: true,
+    overlay: {
+      errors: true,
+      warnings: true
+    },
+    contentBase: [path.resolve(dir, 'dist')],
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+    }
+  },
   cache: true
 })

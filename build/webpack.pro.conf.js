@@ -3,7 +3,7 @@ const path = require('path')
 const Merge = require('webpack-merge')
 const dir = process.cwd()
 const baseConfig = require('./webpack.base.conf')
-// const {CleanWebpackPlugin} = require('clean-webpack-plugin')
+const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
@@ -64,9 +64,9 @@ module.exports = Merge(baseConfig, {
     new webpack.DefinePlugin({
       NODE_ENV: JSON.stringify('production')
     }),
-    // new CleanWebpackPlugin({
-    //   cleanOnceBeforeBuildPatterns: ['**/*', '!vendor.dll.js']
-    // }),
+    new CleanWebpackPlugin({
+      cleanOnceBeforeBuildPatterns: ['**/*', '!vendor.dll.js']
+    }),
     new MiniCssExtractPlugin({
       filename: 'css/[name].[hash:7].css'
     })
